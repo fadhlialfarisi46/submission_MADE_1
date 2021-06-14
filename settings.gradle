@@ -1,2 +1,3 @@
 rootProject.name = "Sub 1 MADE"
 include ':app'
+include ':core'

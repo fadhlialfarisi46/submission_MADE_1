@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.sub1made.R
+import com.example.sub1made.core.R
+import com.example.sub1made.core.databinding.ItemListMovieBinding
 import com.example.sub1made.core.domain.model.Movie
-import com.example.sub1made.databinding.ItemListMovieBinding
 
 class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
 

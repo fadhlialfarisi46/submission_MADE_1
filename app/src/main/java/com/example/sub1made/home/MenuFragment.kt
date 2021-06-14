@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sub1made.R
-import com.example.sub1made.core.data.Resource
 import com.example.sub1made.core.ui.MovieAdapter
 import com.example.sub1made.databinding.FragmentMenuBinding
 import com.example.sub1made.detail.DetailActivity
@@ -44,12 +43,12 @@ class MenuFragment : Fragment() {
             menuViewModel.movie.observe(viewLifecycleOwner, { movie ->
                 if (movie != null){
                     when (movie){
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                        is Resource.Success -> {
+                        is com.example.sub1made.core.data.Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                        is com.example.sub1made.core.data.Resource.Success -> {
                             binding.progressBar.visibility = View.GONE
                             movieAdapter.setData(movie.data)
                         }
-                        is Resource.Error -> {
+                        is com.example.sub1made.core.data.Resource.Error -> {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
                             binding.viewError.tvError.text = movie.message ?: getString(R.string.something_wrong)

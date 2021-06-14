@@ -1,11 +1,11 @@
-package com.example.sub1made.core.domain.usecase
+package com.example.sub1made.core.domain.repository
 
-import com.example.sub1made.core.data.Resource
 import com.example.sub1made.core.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
-interface MovieUseCase {
-    fun getMovies(): Flow<Resource<List<Movie>>>
+interface IMovieRepository {
+
+    fun getMovies(): Flow<com.example.sub1made.core.data.Resource<List<Movie>>>
 
     fun getFavoriteMovie(): Flow<List<Movie>>
 
