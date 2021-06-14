@@ -6,15 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sub1made.core.ui.MovieAdapter
-import com.example.sub1made.core.ui.ViewModelFactory
 import com.example.sub1made.databinding.FragmentFavBinding
 import com.example.sub1made.detail.DetailActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavFragment : Fragment() {
-    private lateinit var favoriteMovieViewModel: FavoriteMovieViewModel
+    private val favoriteMovieViewModel: FavoriteMovieViewModel by viewModel()
 
     private var _binding : FragmentFavBinding? = null
     private val binding get() = _binding!!
@@ -38,9 +37,6 @@ class FavFragment : Fragment() {
                 intent.putExtra(DetailActivity.EXTRA_DATA, selectedMovie)
                 startActivity(intent)
             }
-
-            val factory = ViewModelFactory.getInstance(requireActivity())
-            favoriteMovieViewModel = ViewModelProvider(this, factory)[FavoriteMovieViewModel::class.java]
 
             favoriteMovieViewModel.fovMovie.observe(viewLifecycleOwner, { dataMovie ->
                 movieAdapter.setData(dataMovie)

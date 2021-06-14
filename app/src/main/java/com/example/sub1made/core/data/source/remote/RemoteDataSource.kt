@@ -9,19 +9,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class RemoteDataSource private constructor(private val apiService: ApiService) {
+class RemoteDataSource(private val apiService: ApiService) {
 
     private val apiKey = "fc94569b6d0c9e3ad70328e2e973ab8a"
-
-    companion object{
-        @Volatile
-        private var instance: RemoteDataSource? = null
-
-        fun getInstance(service: ApiService): RemoteDataSource =
-            instance ?: synchronized(this){
-                instance ?: RemoteDataSource(service)
-            }
-    }
 
     suspend fun getMovies(): Flow<ApiResponse<List<MovieResponse>>>{
 

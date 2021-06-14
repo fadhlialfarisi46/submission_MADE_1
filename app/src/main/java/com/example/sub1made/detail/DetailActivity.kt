@@ -1,17 +1,15 @@
 package com.example.sub1made.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.sub1made.R
 import com.example.sub1made.core.domain.model.Movie
-import com.example.sub1made.core.ui.ViewModelFactory
 import com.example.sub1made.databinding.ActivityDetailBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
 
@@ -19,7 +17,7 @@ class DetailActivity : AppCompatActivity() {
         const val EXTRA_DATA = "extra_data"
     }
 
-    private lateinit var detailMovieViewModel: DetailMovieViewModel
+    private val detailMovieViewModel: DetailMovieViewModel by viewModel()
     private lateinit var binding: ActivityDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +26,6 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-
-        val factory = ViewModelFactory.getInstance(this)
-        detailMovieViewModel = ViewModelProvider(this, factory)[DetailMovieViewModel::class.java]
 
         val detailMovie = intent.getParcelableExtra<Movie>(EXTRA_DATA)
         showDetailMovie(detailMovie)

@@ -2,23 +2,21 @@ package com.example.sub1made.home
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sub1made.R
 import com.example.sub1made.core.data.Resource
 import com.example.sub1made.core.ui.MovieAdapter
-import com.example.sub1made.core.ui.ViewModelFactory
 import com.example.sub1made.databinding.FragmentMenuBinding
 import com.example.sub1made.detail.DetailActivity
-
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MenuFragment : Fragment() {
 
-    private lateinit var menuViewModel: MenuViewModel
+    private val menuViewModel: MenuViewModel by viewModel()
 
     private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
@@ -27,7 +25,7 @@ class MenuFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,9 +40,6 @@ class MenuFragment : Fragment() {
                 intent.putExtra(DetailActivity.EXTRA_DATA, selectData)
                 startActivity(intent)
             }
-
-            val factory = ViewModelFactory.getInstance(requireActivity())
-            menuViewModel = ViewModelProvider(this, factory)[MenuViewModel::class.java]
 
             menuViewModel.movie.observe(viewLifecycleOwner, { movie ->
                 if (movie != null){
