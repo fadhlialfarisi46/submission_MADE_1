@@ -30,4 +30,6 @@
     <string name="title_favorite">Favorites</string>
     <string name="popularity">Popularity</string>
     <string name="banner">banner</string>
+    <string name="logo">logo</string>
+    <string name="icon_tv">icon tv</string>
 </resources>
