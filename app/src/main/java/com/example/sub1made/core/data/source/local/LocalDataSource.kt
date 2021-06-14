@@ -1,8 +1,8 @@
 package com.example.sub1made.core.data.source.local
 
-import androidx.lifecycle.LiveData
 import com.example.sub1made.core.data.source.local.entity.MovieEntity
 import com.example.sub1made.core.data.source.local.room.MovieDao
+import kotlinx.coroutines.flow.Flow
 
 class LocalDataSource private constructor(private val movieDao: MovieDao){
 
@@ -15,11 +15,11 @@ class LocalDataSource private constructor(private val movieDao: MovieDao){
             }
     }
 
-    fun getMovies(): LiveData<List<MovieEntity>> = movieDao.getMovies()
+    fun getMovies(): Flow<List<MovieEntity>> = movieDao.getMovies()
 
-    fun getFavoriteMovie(): LiveData<List<MovieEntity>> = movieDao.getFavoriteMovie()
+    fun getFavoriteMovie(): Flow<List<MovieEntity>> = movieDao.getFavoriteMovie()
 
-    fun insertMovie(movieList: List<MovieEntity>) = movieDao.insertMovie(movieList)
+    suspend fun insertMovie(movieList: List<MovieEntity>) = movieDao.insertMovie(movieList)
 
     fun setFavoriteMovie(movie: MovieEntity, newState: Boolean){
         movie.isFavorite = newState
