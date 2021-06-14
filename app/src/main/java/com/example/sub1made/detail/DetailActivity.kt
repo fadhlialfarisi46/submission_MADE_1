@@ -39,6 +39,10 @@ class DetailActivity : AppCompatActivity() {
                 append(imgUrl)
                 append(detailMovie.posterPath)
             }
+            val imageBanner = buildString {
+                append(imgUrl)
+                append(detailMovie.backdropPath)
+            }
             supportActionBar?.title = detailMovie.title
             with(binding.detailContent){
                 textTitle.text = detailMovie.title
@@ -55,6 +59,15 @@ class DetailActivity : AppCompatActivity() {
                         .error(R.drawable.ic_error)
                 )
                 .into(binding.detailContent.imageDetail)
+
+            Glide.with(this)
+                .load(imageBanner)
+                .transform(RoundedCorners(20))
+                .apply(
+                    RequestOptions.placeholderOf(R.drawable.ic_loading)
+                        .error(R.drawable.ic_error)
+                )
+                .into(binding.detailContent.iamgeBanner)
 
             var statusFavorite = detailMovie.isFavorite
             setStatusFavorite(statusFavorite)

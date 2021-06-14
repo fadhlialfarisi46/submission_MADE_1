@@ -17,7 +17,6 @@
     <string name="something_wrong">Oops.. something went wrong</string>
 
 
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -28,4 +27,7 @@
     <string name="title_activity_detail_home">DetailHomeActivity</string>
 
     <string name="baseUrlImage">https://image.tmdb.org/t/p/w500</string>
+    <string name="title_favorite">Favorites</string>
+    <string name="popularity">Popularity</string>
+    <string name="banner">banner</string>
 </resources>
