@@ -9,15 +9,30 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/image_detail"
+        android:id="@+id/iamge_banner"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="18dp"
-        android:src="@color/teal_200"
+        android:layout_height="300dp"
+        android:layout_marginStart="-16dp"
+        android:layout_marginTop="-16dp"
+        android:layout_marginEnd="-16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        android:src="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/poster" />
+        android:contentDescription="@string/banner" />
+
+    <ImageView
+        android:id="@+id/image_detail"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="184dp"
+        android:contentDescription="@string/poster"
+        android:src="@color/teal_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iamge_banner" />
 
     <ImageButton
         android:id="@+id/img_btn_fav"
@@ -39,6 +54,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/img_btn_fav"
         tools:text="@string/title" />
 
@@ -62,6 +78,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="14sp"
+        android:textColor="@color/white"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_release"
         tools:text="@string/release" />
@@ -71,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Popularity"
+        android:text="@string/popularity"
         android:textColor="@color/teal_700"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -86,6 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textSize="16sp"
+        android:textColor="@color/white"
         android:text="@string/runtime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_popularity" />
@@ -110,11 +129,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="14sp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_desc"
-        tools:text="@string/description" />
-
+        tools:text="@string/description"
+        android:layout_marginBottom="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

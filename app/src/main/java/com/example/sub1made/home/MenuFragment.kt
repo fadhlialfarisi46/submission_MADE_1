@@ -2,23 +2,20 @@ package com.example.sub1made.home
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sub1made.R
-import com.example.sub1made.core.data.Resource
 import com.example.sub1made.core.ui.MovieAdapter
-import com.example.sub1made.core.ui.ViewModelFactory
 import com.example.sub1made.databinding.FragmentMenuBinding
 import com.example.sub1made.detail.DetailActivity
-
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MenuFragment : Fragment() {
 
-    private lateinit var menuViewModel: MenuViewModel
+    private val menuViewModel: MenuViewModel by viewModel()
 
     private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
@@ -27,7 +24,7 @@ class MenuFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -43,18 +40,15 @@ class MenuFragment : Fragment() {
                 startActivity(intent)
             }
 
-            val factory = ViewModelFactory.getInstance(requireActivity())
-            menuViewModel = ViewModelProvider(this, factory)[MenuViewModel::class.java]
-
             menuViewModel.movie.observe(viewLifecycleOwner, { movie ->
                 if (movie != null){
                     when (movie){
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                        is Resource.Success -> {
+                        is com.example.sub1made.core.data.Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                        is com.example.sub1made.core.data.Resource.Success -> {
                             binding.progressBar.visibility = View.GONE
                             movieAdapter.setData(movie.data)
                         }
-                        is Resource.Error -> {
+                        is com.example.sub1made.core.data.Resource.Error -> {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
                             binding.viewError.tvError.text = movie.message ?: getString(R.string.something_wrong)

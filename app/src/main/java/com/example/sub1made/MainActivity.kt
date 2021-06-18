@@ -1,13 +1,13 @@
 package com.example.sub1made
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.sub1made.databinding.ActivityMainBinding
-import com.example.sub1made.favorite.FavFragment
 import com.example.sub1made.home.MenuFragment
 import com.google.android.material.navigation.NavigationView
 
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 title = getString(R.string.app_name)
             }
             R.id.nav_favorite -> {
-                fragment = FavFragment()
+                fragment = instantiateFragment()
                 title = getString(R.string.menu_favorite)
             }
         }
@@ -64,5 +64,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+
+
+    private fun instantiateFragment(): Fragment? {
+        return try {
+            Class.forName("com.example.sub1made.favorite.FavFragment").newInstance() as Fragment
+        } catch (e: Exception) {
+            Toast.makeText(this, "Module not found", Toast.LENGTH_SHORT).show()
+            null
+        }
     }
 }
