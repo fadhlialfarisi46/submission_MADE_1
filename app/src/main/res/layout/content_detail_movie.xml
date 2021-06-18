@@ -82,7 +82,7 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_release"
-        tools:text="@string/release" />
+        tools:text="@string/release_" />
 
     <TextView
         android:id="@+id/txt_popularity"
@@ -105,7 +105,7 @@
         android:layout_marginTop="5dp"
         android:textSize="16sp"
         android:textColor="@color/white"
-        android:text="@string/runtime"
+        android:text="@string/popularity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_popularity" />
 

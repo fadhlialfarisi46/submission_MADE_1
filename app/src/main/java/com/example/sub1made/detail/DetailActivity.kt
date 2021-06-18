@@ -9,6 +9,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.sub1made.R
 import com.example.sub1made.core.domain.model.Movie
 import com.example.sub1made.databinding.ActivityDetailBinding
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
@@ -75,7 +76,24 @@ class DetailActivity : AppCompatActivity() {
                 statusFavorite = !statusFavorite
                 detailMovieViewModel.setFavoriteMovie(detailMovie, statusFavorite)
                 setStatusFavorite(statusFavorite)
+                setSnackbar(detailMovie.title, statusFavorite)
             }
+        }
+    }
+
+    private fun setSnackbar(title: String, statusFavorite: Boolean) {
+        if (statusFavorite){
+            Snackbar.make(
+                binding.root,
+                "$title added to favorite",
+                Snackbar.LENGTH_SHORT
+            ).show()
+        } else {
+            Snackbar.make(
+                binding.root,
+                "$title removed from favorite",
+                Snackbar.LENGTH_SHORT
+            ).show()
         }
     }
 
