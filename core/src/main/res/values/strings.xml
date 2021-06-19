@@ -4,5 +4,6 @@
     <string name="text_primary">Sample of title text</string>
     <string name="text_subtitle">Sample of subtitle text</string>
     <string name="baseUrlImage">https://image.tmdb.org/t/p/w500</string>
+    <string name="title_favorite">Favorite</string>
 
 </resources>
