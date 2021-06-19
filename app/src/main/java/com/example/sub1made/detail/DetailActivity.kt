@@ -19,11 +19,12 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private val detailMovieViewModel: DetailMovieViewModel by viewModel()
-    private lateinit var binding: ActivityDetailBinding
+    private var _binding: ActivityDetailBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailBinding.inflate(layoutInflater)
+        _binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
@@ -103,5 +104,10 @@ class DetailActivity : AppCompatActivity() {
         } else {
             binding.detailContent.imgBtnFav.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_false))
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

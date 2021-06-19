@@ -27,9 +27,11 @@ android {
     buildTypes {
         debug {
             buildConfigField 'String', "ApiKey", apiKey
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField 'String', "ApiKey", apiKey
         }
@@ -71,4 +73,6 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
+    implementation "net.zetetic:android-database-sqlcipher:4.4.0"
+    implementation "androidx.sqlite:sqlite-ktx:2.1.0"
 }
