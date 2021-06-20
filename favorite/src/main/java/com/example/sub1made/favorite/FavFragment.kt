@@ -25,7 +25,6 @@ class FavFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        activity?.setTheme(R.style.Theme_FavApp)
         _binding = FragmentFavBinding.inflate(inflater, container, false)
         loadKoinModules(favoritesModule)
         return binding.root
