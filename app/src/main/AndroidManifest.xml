@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MovieApp"
         tools:ignore="AllowBackup">
         <activity android:name=".SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.MovieApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
